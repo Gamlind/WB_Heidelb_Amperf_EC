@@ -1,0 +1,224 @@
+- name: "Wallbox" 
+  type: serial
+  port: /dev/ttyUSB0
+  baudrate: 19200
+  bytesize: 8
+  method: rtu
+  parity: E
+  stopbits: 1
+  delay: 0
+  message_wait_milliseconds: 30
+  timeout: 5
+    
+  sensors:
+    - name: WB_state
+      unique_id: WB_EC_5_state
+      scan_interval: 5
+      data_type: uint16
+      precision: 0
+      address: 5
+      input_type: input
+      slave: 1
+      state_class: measurement
+    - name: WB_current_L1
+      unique_id: WB_EC_6_curr_L1
+      scan_interval: 5
+      data_type: uint16
+      precision: 1
+      address: 6
+      scale: 0.1
+      input_type: input
+      slave: 1
+      state_class: measurement
+      unit_of_measurement: A
+      device_class: Current
+    - name: WB_current_L2
+      unique_id: WB_EC_curr_L2
+      scan_interval: 5
+      data_type: uint16
+      precision: 1
+      address: 7
+      scale: 0.1
+      input_type: input
+      slave: 1
+      state_class: measurement
+      unit_of_measurement: A
+      device_class: Current
+    - name: WB_current_L3
+      unique_id: WB_EC_curr_L3
+      scan_interval: 5
+      data_type: uint16
+      precision: 1
+      address: 8
+      scale: 0.1
+      input_type: input
+      slave: 1
+      state_class: measurement
+      unit_of_measurement: A
+      device_class: Current
+    - name: WB_temp
+      unique_id: WB_EC_temp
+      scan_interval: 5
+      data_type: int16
+      precision: 1
+      scale: 0.1
+      address: 9
+      input_type: input
+      slave: 1
+      state_class: measurement
+      unit_of_measurement: °C
+      device_class: Temperature
+    - name: WB_voltage_L1
+      unique_id: WB_EC_10_volt_L1
+      scan_interval: 5
+      data_type: uint16
+      precision: 0
+      address: 10
+      input_type: input
+      slave: 1
+      state_class: measurement
+      unit_of_measurement: V
+      device_class: Voltage
+    - name: WB_voltage_L2
+      unique_id: WB_EC_volt_L2
+      scan_interval: 5
+      data_type: uint16
+      precision: 0
+      address: 11
+      input_type: input
+      slave: 1
+      state_class: measurement
+      unit_of_measurement: V
+      device_class: Voltage
+    - name: WB_voltage_L3
+      unique_id: WB_EC_volt_L3
+      scan_interval: 5
+      data_type: uint16
+      precision: 0
+      address: 12
+      input_type: input
+      slave: 1
+      state_class: measurement
+      unit_of_measurement: V
+      device_class: Voltage
+    - name: WB_lock_state
+      unique_id: WB_EC_Lock_State
+      scan_interval: 20
+      data_type: uint16
+      address: 13
+      input_type: input
+      slave: 1
+    - name: WB_power
+      unique_id: WB_EC_power
+      scan_interval: 1
+      data_type: uint16
+      precision: 0
+      address: 14
+      input_type: input
+      slave: 1
+      state_class: measurement
+      unit_of_measurement: W
+      device_class: Power
+    - name: WB_energy_s_power_up_Hb
+      unique_id: WB_EC_Energy_s_Power_up_HB
+      scan_interval: 5
+      data_type: uint16
+      precision: 0
+      address: 15
+      scale: 65536
+      input_type: input
+      slave: 1
+      state_class: total
+      unit_of_measurement: Wh
+      device_class: Energy
+    - name: WB_energy_s_power_up_Lb
+      unique_id: WB_EC_Energy_s_Power_up_LB
+      scan_interval: 5
+      data_type: uint16
+      precision: 0
+      address: 16
+      scale: 1
+      input_type: input
+      slave: 1
+      state_class: total
+      unit_of_measurement: Wh
+      device_class: Energy
+    - name: WB_energy_s_instal_Hb
+      unique_id: WB_EC_Energy_s_Instal_HB
+      scan_interval: 5
+      data_type: uint16
+      precision: 0
+      address: 17
+      scale: 65536
+      input_type: input
+      slave: 1
+      state_class: total
+      unit_of_measurement: Wh
+      device_class: Energy
+    - name: WB_energy_s_instal_Lb
+      unique_id: WB_EC_Energy_s_Instal_LB
+      scan_interval: 5
+      data_type: uint16
+      precision: 0
+      address: 18
+      scale: 1
+      input_type: input
+      slave: 1
+      state_class: total
+      unit_of_measurement: Wh
+      device_class: Energy
+    - name: WB_Watchdog_timeout
+      unique_id: WB_EC_Watchdog_Timeout
+      scan_interval: 5
+      data_type: uint16
+      precision: 1
+      scale: 0.001
+      address: 257
+      input_type: holding
+      slave: 1
+      state_class: measurement
+      unit_of_measurement: s      
+    - name: WB_std_funct
+      unique_id: WB_EC_Standby_Funct
+      scan_interval: 5
+      data_type: uint16
+      precision: 1
+      scale: 1
+      address: 258
+      input_type: holding
+      slave: 1
+      state_class: measurement
+    - name: WB_remote_lock
+      unique_id: WB_EC_Remote_Lock
+      scan_interval: 5
+      data_type: uint16
+      precision: 1
+      scale: 1
+      address: 259
+      input_type: holding
+      slave: 1
+      state_class: measurement
+    - name: WB_set_current_read
+      unique_id: WB_EC_set_current_read
+      scan_interval: 1
+      data_type: uint16
+      precision: 1
+      scale: 0.1
+      address: 261
+      input_type: holding
+      slave: 1
+      state_class: measurement
+      unit_of_measurement: A
+      device_class: Current
+    - name: WB_set_current_read_fb
+      unique_id: WB_EC_set_current_read_fb
+      scan_interval: 5
+      data_type: uint16
+      precision: 1
+      address: 262
+      scale: 0.1
+      input_type: holding
+      slave: 1
+      state_class: measurement
+      unit_of_measurement: A
+      device_class: Current
